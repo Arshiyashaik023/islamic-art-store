@@ -365,7 +365,7 @@ export default function Hero({ className = '' }: HeroProps) {
           <span
             className="text-[0.75rem] md:text-xs font-medium uppercase"
             style={{
-              fontFamily: "'Source Sans 3', sans-serif",
+              fontFamily: "'Source Sans 5', sans-serif",
               letterSpacing: '0.2em',
               color: C.gold600,
             }}
@@ -398,10 +398,10 @@ export default function Hero({ className = '' }: HeroProps) {
           variants={subheadlineVariants}
           className="mt-6 max-w-[480px] mx-auto md:mx-0 text-base md:text-lg"
           style={{
-            fontFamily: "'Source Sans 3', sans-serif",
+            fontFamily: "'Source Sans 5', sans-serif",
             fontWeight: 400,
             lineHeight: 1.7,
-            color: C.sand700,
+            color: C.sand900,
           }}
         >
           Each piece tells a story through careful brushwork and artistic vision.
