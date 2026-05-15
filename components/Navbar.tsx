@@ -48,9 +48,7 @@ const COLORS = {
 
 const NAV_LINKS = [
     { label: 'Collections', href: '/collections' },
-    { label: 'Artisans', href: '/artisans' },
-    { label: 'Our Story', href: '/our-story' },
-    { label: 'Journal', href: '/journal' },
+    { label: 'Artist', href: '/artist' },
     { label: 'Contact', href: '/contact' },
 ] as const;
 
@@ -348,18 +346,11 @@ function MobileMenu({ isOpen, onClose, pathname, cartCount, textColor }: MobileM
                             className="flex items-center justify-between px-6 shrink-0"
                             style={{ height: 64 }}
                         >
-                            <span
-                                style={{
-                                    fontFamily: "'Cinzel', serif",
-                                    fontWeight: 400,
-                                    fontSize: '1.125rem',
-                                    letterSpacing: '0.15em',
-                                    textTransform: 'uppercase',
-                                    color: COLORS.sand700,
-                                }}
-                            >
-                                AYNN
-                            </span>
+                            <img
+                                src="/logo.png"
+                                alt="AYNN Logo"
+                                className="h-8 w-auto object-contain"
+                            />
                             <motion.button
                                 aria-label="Close menu"
                                 onClick={onClose}
@@ -433,7 +424,7 @@ function MobileMenu({ isOpen, onClose, pathname, cartCount, textColor }: MobileM
                                     borderRadius: 0,
                                 }}
                             >
-                                Explore Collection
+                                Explore Collections
                             </Link>
                         </div>
 
@@ -549,24 +540,18 @@ export default function Navbar({ variant = 'light', cartCount = 0 }: NavbarProps
                     <Link
                         href="/"
                         aria-label="AYNN home"
-                        className="shrink-0 outline-none focus-visible:outline-2 focus-visible:outline-offset-2"
-                        style={{
-                            fontFamily: "'Cinzel', serif",
-                            fontWeight: 400,
-                            fontSize: '1.25rem',
-                            letterSpacing: '0.15em',
-                            textTransform: 'uppercase',
-                            color: textColor,
-                            textDecoration: 'none',
-                            transition: 'color 0.5s cubic-bezier(0.25, 0.1, 0.25, 1.0)',
-                        }}
+                        className="shrink-0 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 flex items-center"
                     >
-                        AYNN
+                        <img
+                            src="/images/logo.png"
+                            alt="AYNN Logo"
+                            className="h-35 w-auto object-contain"
+                        />
                     </Link>
 
                     {/* ── CENTER: Desktop nav links (hidden below 768px) ─────────── */}
                     <div
-                        className="hidden md:flex items-center"
+                        className="hidden md:flex items-center ml-auto mr-8 lg:mr-16"
                         style={{ gap: 'clamp(24px, 2.5vw, 40px)' }}
                     >
                         {NAV_LINKS.map(({ label, href }) => (
@@ -605,38 +590,45 @@ export default function Navbar({ variant = 'light', cartCount = 0 }: NavbarProps
                             <ShoppingBag size={20} color={iconColor} />
                         </IconButton>
 
-                        {/* CTA button — hidden below 640px, shortened at 1024–1279px */}
+                        {/* CTA button — hidden below 640px */}
                         <motion.div
-                            className="hidden sm:flex ml-4"
-                            whileHover={shouldReduce ? {} : { y: -1, boxShadow: '0 4px 20px rgba(194, 138, 62, 0.15)' }}
-                            whileTap={shouldReduce ? {} : { y: 0 }}
-                            transition={{ duration: 0.3 }}
+                            className="hidden sm:flex ml-6"
+                            whileHover={shouldReduce ? {} : {
+                                y: -2,
+                                boxShadow: '0 8px 24px rgba(94, 82, 69, 0.25)',
+                            }}
+                            whileTap={shouldReduce ? {} : { y: 0, scale: 0.98 }}
+                            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }}
                         >
                             <Link
-                                href="/collections"
-                                className="flex items-center justify-center outline-none focus-visible:outline-2 focus-visible:outline-offset-2"
+                                href="/shop"
+                                className="flex items-center justify-center outline-none focus-visible:outline-2 focus-visible:outline-offset-2 relative overflow-hidden group"
                                 style={{
-                                    backgroundColor: COLORS.gold500,
+                                    backgroundColor: COLORS.sand900,
                                     color: COLORS.warmWhite,
-                                    padding: '14px 32px',
+                                    padding: '12px 32px',
                                     fontFamily: "'Source Sans 3', sans-serif",
                                     fontWeight: 500,
                                     fontSize: '0.875rem',
                                     letterSpacing: '0.08em',
                                     textTransform: 'uppercase',
                                     textDecoration: 'none',
-                                    borderRadius: 0,
+                                    borderRadius: '9999px',
                                     whiteSpace: 'nowrap',
-                                    transition: 'background-color 0.3s',
+                                    boxShadow: '0 4px 14px rgba(30, 26, 22, 0.12)',
+                                    transition: 'background-color 0.4s ease',
                                 }}
-                                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = COLORS.gold600; }}
-                                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = COLORS.gold500; }}
-                                onMouseDown={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = COLORS.gold700; }}
-                                onMouseUp={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = COLORS.gold600; }}
+                                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = COLORS.sand700; }}
+                                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = COLORS.sand900; }}
                             >
-                                {/* Shorten label at medium widths */}
-                                <span className="hidden xl:inline">Explore Collection</span>
-                                <span className="inline xl:hidden">Explore</span>
+                                <span className="relative z-10">Shop Now</span>
+                                <div
+                                    className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none"
+                                    style={{
+                                        background: 'linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent)',
+                                        transition: 'opacity 0.6s ease',
+                                    }}
+                                />
                             </Link>
                         </motion.div>
 
