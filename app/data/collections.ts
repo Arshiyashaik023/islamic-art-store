@@ -13,8 +13,8 @@ export const collections: Collection[] = [
     label: "Collection",
     title: "Arabic Calligraphy",
     subtitle: "Handcrafted masterpieces in timeless script",
-    image: "/images/collections/Arabic calligraphy.jpg",
-    href: "/collections/arabic-calligraphy",
+    image: "/images/collections/arabic calligraphy.jpg",
+    href: "/collections?category=Arabic+Calligraphy",
   },
   {
     id: "canvas-paintings",
@@ -22,7 +22,7 @@ export const collections: Collection[] = [
     title: "Canvas Paintings",
     subtitle: "Contemporary art meets Islamic tradition",
     image: "/images/collections/Islamic paintings.jpg",
-    href: "/collections/canvas-paintings",
+    href: "/collections?category=Canvas+Paintings",
   },
   {
     id: "islamic-wall-decor",
@@ -30,7 +30,7 @@ export const collections: Collection[] = [
     title: "Islamic Wall Decor",
     subtitle: "Elevate your space with sacred artistry",
     image: "/images/collections/islamic wall decor.png",
-    href: "/collections/islamic-wall-decor",
+    href: "/collections?category=Islamic+Wall+Decor",
   },
   {
     id: "artwork",
@@ -38,6 +38,6 @@ export const collections: Collection[] = [
     title: "Fine Artwork",
     subtitle: "Curated pieces for the discerning collector",
     image: "/images/collections/Artwork.jpg",
-    href: "/collections/artwork",
+    href: "/collections?category=Fine+Artwork",
   },
 ];

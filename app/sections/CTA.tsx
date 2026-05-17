@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -69,7 +70,8 @@ export default function CTA() {
             className="mt-8 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6"
           >
             {/* Primary Button */}
-            <button
+            <Link
+              href="/collections"
               className="
                 w-full md:w-auto min-w-[200px]
                 px-8 py-4 rounded-full
@@ -78,10 +80,11 @@ export default function CTA() {
                 hover:bg-[#333333] hover:shadow-xl hover:shadow-black/10 hover:-translate-y-0.5
                 transition-all duration-500
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F0E8]
+                text-center inline-block
               "
             >
               Shop Collection
-            </button>
+            </Link>
 
             {/* Secondary Button */}
             <button

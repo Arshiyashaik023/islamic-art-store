@@ -12,7 +12,7 @@ export const featuredProducts: Product[] = [
     id: "1",
     name: "Ayatul Kursi Masterpiece",
     price: 350,
-    image: "/images/products/ayatul kursi.jpg",
+    image: "/images/products/Ayatul kursi.jpg",
     isNew: true,
   },
   {

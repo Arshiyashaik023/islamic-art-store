@@ -3,21 +3,25 @@
 import React from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import type { Product } from "@/app/data/products";
+import type { Product } from "@/lib/product-data";
+import Link from "next/link";
 
 interface ProductCardProps extends Product {
   priority?: boolean;
 }
 
 export default function ProductCard({
-  name,
+  slug,
+  title,
   price,
-  originalPrice,
-  image,
+  images,
   isNew,
+  originalPrice,
   priority = false,
 }: ProductCardProps) {
   const prefersReducedMotion = useReducedMotion();
+  const image = images[0];
+  const name = title; // Fallback for aria-labels if needed
 
   return (
     <motion.div
@@ -42,6 +46,7 @@ export default function ProductCard({
       "
       whileHover={prefersReducedMotion ? {} : { y: -6 }}
     >
+      <Link href={`/product/${slug}`} className="block h-full w-full">
       {/* Optional Ambient Glow Behind Card via Pseudo-element approach */}
       <div
         className="
@@ -58,6 +63,7 @@ export default function ProductCard({
       <div className="relative aspect-[3/4] overflow-hidden w-full z-10 bg-gray-100">
         <motion.div
           className="absolute inset-0 w-full h-full"
+          style={{ position: "absolute" }}
           whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         >
@@ -111,11 +117,17 @@ export default function ProductCard({
             transition-colors duration-300
             focus-visible:outline-none focus-visible:underline
           "
-          aria-label={`Add ${name} to cart`}
+          aria-label={`Add ${title} to cart`}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            // Handle quick add
+          }}
         >
           + Quick Add
         </button>
       </div>
+      </Link>
     </motion.div>
   );
 }

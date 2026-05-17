@@ -225,7 +225,7 @@ export default function Hero({ className = '' }: HeroProps) {
         initial={shouldReduce ? undefined : { scale: 1.08, opacity: 0 }}
         animate={shouldReduce ? undefined : { scale: 1, opacity: 1 }}
         transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1.0] }}
-        style={{ y: parallaxY }}
+        style={{ y: parallaxY, position: "absolute" }}
       >
         <Image
           src="/images/hero image.png"

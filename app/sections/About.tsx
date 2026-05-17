@@ -41,6 +41,7 @@ export default function About() {
           >
             <motion.div
               className="absolute inset-0 w-full h-full"
+              style={{ position: "absolute" }}
               whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >

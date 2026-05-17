@@ -66,6 +66,7 @@ export default function CollectionCard({
         {/* Image Layer */}
         <motion.div
           className="absolute inset-0 will-change-transform"
+          style={{ position: "absolute" }}
           whileHover={
             prefersReducedMotion
               ? {}

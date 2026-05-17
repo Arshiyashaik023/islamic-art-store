@@ -2,14 +2,16 @@
 
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
-import { featuredProducts } from "@/app/data/products";
+import { products } from "@/lib/product-data";
 import ProductCard from "@/app/components/ProductCard";
+
+const featuredProducts = products.filter(p => p.isFeatured);
 
 const sectionVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const },
   },
 };
 
@@ -18,7 +20,7 @@ const headerVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const },
   },
 };
 
@@ -36,7 +38,7 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const },
   },
 };
 
@@ -77,7 +79,7 @@ export default function FeaturedProducts() {
             variants={headerVariants}
             className="text-2xl md:text-3xl font-light tracking-tight text-[#1C1C1C]"
           >
-            Featured Pieces
+            Featured Products
           </motion.h2>
         </motion.div>
 

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, ArrowRight } from "lucide-react";
 import { FaInstagram } from "react-icons/fa";
+import Link from "next/link";
 
 // Fallback Pinterest Icon since it's not always in lucide-react standard set
 const PinterestIcon = ({ className }: { className?: string }) => (
@@ -102,14 +103,20 @@ export default function Footer() {
               Navigate
             </h3>
             <ul className="space-y-3">
-              {["Home", "Shop", "About", "Custom Orders", "Contact"].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
+              {[
+                { name: "Home", href: "/" },
+                { name: "Shop", href: "/collections" },
+                { name: "About", href: "/#about" },
+                { name: "Custom Orders", href: "/custom" },
+                { name: "Contact", href: "/contact" }
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
                     className="text-sm font-light text-[#9A9590] hover:text-white transition-colors duration-300 focus-visible:outline-none focus-visible:underline"
                   >
-                    {link}
-                  </a>
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -121,14 +128,19 @@ export default function Footer() {
               Collections
             </h3>
             <ul className="space-y-3">
-              {["Arabic Calligraphy", "Canvas Paintings", "Islamic Wall Decor", "Artwork"].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
+              {[
+                { name: "Arabic Calligraphy", href: "/collections?category=Arabic+Calligraphy" },
+                { name: "Canvas Paintings", href: "/collections?category=Canvas+Paintings" },
+                { name: "Islamic Wall Decor", href: "/collections?category=Islamic+Wall+Decor" },
+                { name: "Fine Artwork", href: "/collections?category=Fine+Artwork" }
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
                     className="text-sm font-light text-[#9A9590] hover:text-white transition-colors duration-300 focus-visible:outline-none focus-visible:underline"
                   >
-                    {link}
-                  </a>
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -181,12 +193,12 @@ export default function Footer() {
             © {new Date().getFullYear()} AYNN. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-xs text-[#9A9590]/60 hover:text-white transition-colors">
+            <Link href="/privacy" className="text-xs text-[#9A9590]/60 hover:text-white transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="text-xs text-[#9A9590]/60 hover:text-white transition-colors">
+            </Link>
+            <Link href="/terms" className="text-xs text-[#9A9590]/60 hover:text-white transition-colors">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>
